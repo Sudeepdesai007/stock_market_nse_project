@@ -9,6 +9,11 @@
    as auto-fit in AnalysisTab.css handles this. */
 
 @media (max-width: 600px) { 
+  body {
+    padding-left: var(--space-sm);
+    padding-right: var(--space-sm);
+  }
+
   /* === Global Grid Overrides === */
   .cards-grid-area {
     grid-template-columns: 1fr;
@@ -32,7 +37,7 @@
   }
   .metric-category-card > h3,
   .historical-data-tab-content.card > h3 { /* Accented headers */
-    font-size: var(--font-size-xl); /* Was header-2 (1.5rem) */
+    font-size: var(--font-size-lg); /* Was var(--font-size-xl) */
     padding-bottom: var(--space-md);
     margin-bottom: var(--space-lg);
   }
@@ -46,7 +51,8 @@
     flex-direction: column;
     align-items: flex-start;
     padding-top: var(--space-xs);
-    padding-bottom: var(--space-md); 
+    padding-bottom: var(--space-sm);
+    font-size: var(--font-size-xs); /* Ensure consistent small font for these key-value pairs */
   }
   .company-overview p strong {
     margin-right: 0;
@@ -60,14 +66,15 @@
   .welcome-card,
   .loading-indicator-card,
   .centered-message-card {
-    padding: var(--space-xl) var(--space-lg);
-    margin-top: var(--space-2xl);
+    padding: var(--space-lg) var(--space-md); /* Was var(--space-xl) var(--space-lg) */
+    margin-top: var(--space-xl); /* Was var(--space-2xl) */
   }
-  .welcome-card h3, 
+  .welcome-card h3, /* This targets h1 in WelcomeMessage.js */
   .centered-message-card h3 {
-    font-size: var(--font-size-xl); /* Was header-1 / header-2 */
-    margin-bottom: var(--space-lg);
-    padding-bottom: var(--space-md);
+    font-size: var(--font-size-md); /* Was var(--font-size-lg) */
+    line-height: var(--line-height-tight); /* Added for better spacing on mobile */
+    margin-bottom: var(--space-md); 
+    padding-bottom: var(--space-sm); 
   }
   .error-message-card {
     padding: var(--space-lg);
@@ -79,7 +86,7 @@
   .error-message-card p,
   .welcome-card p,
   .centered-message-card p {
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-xs); /* Was var(--font-size-sm) */
   }
   .shrug-icon {
     font-size: var(--font-size-icon-md);
@@ -122,13 +129,14 @@
     padding-bottom: var(--space-lg);
   }
   .logo-placeholder {
-    font-size: var(--font-size-3xl); /* Was 4xl */
+    font-size: var(--font-size-2xl); /* Was 4xl, then 3xl */
     margin-bottom: var(--space-xxs);
   }
   .App-header > h1 {
-    font-size: var(--font-size-2xl); /* Was 4xl */
-    margin-bottom: var(--space-xl);
-    padding-bottom: var(--space-md);
+    font-size: var(--font-size-lg); /* Was xl (20px), now lg (18px) */
+    line-height: var(--line-height-tight); /* Added for compactness */
+    margin-bottom: var(--space-lg); /* Was var(--space-xl) */
+    padding-bottom: var(--space-sm); /* Was var(--space-md) */
   }
 
   /* === Content.css Mobile Adjustments === */
@@ -138,7 +146,7 @@
     margin-bottom: var(--space-2xl);
   }
   .stock-data-container h2 { /* Company Name Title */
-    font-size: var(--font-size-xl); /* Was header-1 */
+    font-size: var(--font-size-lg); /* Was var(--font-size-xl) */
     margin-bottom: var(--space-lg);
     padding-bottom: var(--space-xs);
   }
@@ -182,6 +190,12 @@
     width: 100%;
   }
 
+  /* Adjust suggestions list for smaller screens */
+  .suggestions-list {
+    max-height: 160px; /* Slightly less aggressive reduction, e.g. 4-5 items */
+    /* Consider even smaller like 120px if keyboard overlap is severe */
+  }
+
   /* === HistoricalDataTab.css Mobile Adjustments === */
   .historical-controls {
     padding: var(--space-md);
@@ -214,7 +228,7 @@
     white-space: nowrap; /* Prevent tabs from wrapping */
   }
   .tab-button {
-    padding: var(--space-sm) var(--space-md);
+    padding: var(--space-md) var(--space-md); /* Was sm vertical, md horizontal. Now md for both. */
     font-size: var(--font-size-sm);
     margin: 0 var(--space-xxs); /* Reduce margin between tabs */
   }
@@ -265,15 +279,37 @@
     flex-shrink: 0; /* Prevent icon from shrinking */
   }
   .metric-label .info-icon-container .info-icon {
-    width: var(--size-icon-sm); /* Smaller icon on mobile: 16px */
+    width: var(--size-icon-sm); 
     height: var(--size-icon-sm);
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor' width='16px' height='16px'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z'/%3E%3C/svg%3E"); /* SVG width/height updated to 16px */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor' width='16px' height='16px'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z'/%3E%3C/svg%3E"); 
+  }
+
+  /* Ensure value container and its direct children align left on mobile */
+  .metric-value-container, /* Targeting the original class name */
+  .metric-value-content-wrapper { /* And the alias if used */
+    align-items: flex-start !important; /* Override desktop's flex-end */
+    text-align: left !important; /* Ensure text alignment is left for the container */
+    width: 100%; 
+  }
+
+  /* Remove overly broad rule for direct children, specific classes are handled below or already have styles */
+  /* .metric-value-container > *,
+  .metric-value-content-wrapper > * {
+    text-align: left !important; 
+    align-self: flex-start !important; 
+  } */
+
+  /* Ensure peer comparison details align their internal content to the left */
+  .peer-comparison-details {
+    justify-content: flex-start !important; /* Override desktop's flex-end for internal items */
+    /* Other styles for .peer-comparison-details (like font-size, color) might be in .metric-peer-average-subline */
   }
 
   .metric-value-content-wrapper {
-    align-items: flex-start;
-    text-align: left;
-    width: 100%; 
+    /* Remove redundant rules if covered above, or keep if structure varies */
+    /* align-items: flex-start; already covered */
+    /* text-align: left; already covered */
+    /* width: 100%; already covered */
   }
   .metric-value {
     text-align: left;
@@ -284,11 +320,12 @@
   }
   .metric-peer-average-subline,
   .metric-yoy-growth {
-    text-align: left;
+    text-align: left; 
     margin-left: 0; 
-    font-size: var(--font-size-xxs); /* Was 0.85em, now explicit 12px */
+    font-size: var(--font-size-xxs); 
     margin-top: var(--space-xxs); 
     word-break: break-word; 
+    width: 100%; /* Ensure sub-lines take full width to help stacking */
   }
 
   /* === Utilities.css Mobile Adjustments === */
@@ -303,6 +340,20 @@
     padding: var(--space-xs) var(--space-md);
     font-size: var(--font-size-xs);
   }
+
+  /* General button touch target enhancement */
+  button,
+  .button, /* if you use a class for button-like links */
+  [role="button"] {
+    /* min-height: 40px; Applied globally now, consider if mobile specific is needed */
+    /* If specific mobile adjustments are needed for min-height, add them here */
+  }
+
+  /* Specific adjustment for tab panels that are also cards */
+  .tab-panel.card {
+    padding: var(--space-md); /* Consistent 12px padding on all sides for the tab panel itself */
+  }
+  /* .tab-panel.card > .cards-grid-area styling removed as not strictly needed if tab-panel has padding */
 
 }
 
