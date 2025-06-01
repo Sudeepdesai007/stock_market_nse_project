@@ -116,7 +116,6 @@ dist/
 
 # React specific
 build/
-public/EQUITY_L.csv
 
 # macOS
 .DS_Store
