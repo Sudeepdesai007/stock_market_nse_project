@@ -214,31 +214,7 @@ const StockSearchForm = ({ symbol, onSymbolChange, onSubmit, loading, showHint }
     onSubmit(suggestion.symbol.trim());
   }, [onSymbolChange, onSubmit]);
 
-  const handleSubmitInternal = (event) => {
-    if (event) event.preventDefault(); // Prevent default form submission
-    setShowSuggestions(false);
-    setActiveSuggestionIndex(-1);
-    // Check if there's an active suggestion to submit, otherwise submit current input value
-    if (activeSuggestionIndex >= 0 && activeSuggestionIndex < suggestions.length) {
-      const selectedSymbol = suggestions[activeSuggestionIndex].symbol.trim();
-      onSymbolChange(selectedSymbol); // Update input field with selected symbol
-      onSubmit(selectedSymbol);
-    } else {
-      onSubmit(symbol.trim()); // Submit the current value in the input field
-    }
-  };
-
   const handleKeyDown = (event) => {
-    if (event.key === 'Enter') {
-      // If a suggestion is active, the existing logic handles it.
-      // If no suggestion is active, we submit the form with the current input.
-      if (activeSuggestionIndex === -1) {
-        event.preventDefault(); // Prevent default form submission if not handled by suggestion selection
-        handleSubmitInternal(); // Call the internal submit handler
-        return; // Exit early as we've handled the Enter key
-      }
-    }
-
     if (!showSuggestions || suggestions.length === 0) {
       // If suggestions are not shown or empty, but Escape is pressed, clear input
       if (event.key === 'Escape') {
@@ -260,15 +236,14 @@ const StockSearchForm = ({ symbol, onSymbolChange, onSubmit, loading, showHint }
         prevIndex > 0 ? prevIndex - 1 : suggestions.length - 1
       );
     } else if (event.key === 'Enter') {
-      // This part now only runs if a suggestion IS active due to the check above
       if (activeSuggestionIndex >= 0 && activeSuggestionIndex < suggestions.length) {
         event.preventDefault();
         const selectedSymbol = suggestions[activeSuggestionIndex].symbol.trim();
         onSymbolChange(selectedSymbol);
-        onSubmit(selectedSymbol); // This can also call handleSubmitInternal if we want to centralize
+        onSubmit(selectedSymbol);
         setShowSuggestions(false);
         setActiveSuggestionIndex(-1);
-        // No return here, allow other keydown logic if necessary, though Enter usually means action is done.
+        return;
       }
     } else if (event.key === 'Escape') {
       event.preventDefault();
@@ -320,11 +295,12 @@ const StockSearchForm = ({ symbol, onSymbolChange, onSubmit, loading, showHint }
 
   return (
     <form 
-      ref={formRef}
-      className={`search-form ${loading ? 'loading' : ''} ${showSuggestions ? 'suggestions-active' : ''}`}
-      onSubmit={handleSubmitInternal} // Use the new internal submit handler
-      role="search" 
-      aria-label="Search for a stock"
+      onSubmit={(e) => {
+        e.preventDefault();
+        onSubmit(e);
+      }}
+      className={`stock-form ${showSuggestions && suggestions.length > 0 ? 'suggestions-are-active' : ''}`}
+      ref={formRef} // Changed from wrapperRef
     >
       <div className="stock-input-wrapper">
         <input
