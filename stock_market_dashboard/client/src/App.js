@@ -36,6 +36,7 @@ import {
   Legend,
   TimeScale,
   BarElement,
+  BarController,
 } from 'chart.js';
 import 'chartjs-adapter-date-fns';
 import {
@@ -105,7 +106,8 @@ ChartJS.register(
   Tooltip,
   Legend,
   TimeScale,
-  BarElement
+  BarElement,
+  BarController
 );
 
 function App() {
