@@ -1,0 +1,100 @@
+/* ==========================================================================
+   Tab Navigation & Tab Panel Styles
+   ========================================================================== */
+/* Tab Navigation Styles */
+.tabs-navigation {
+  display: flex;
+  justify-content: center; 
+  margin-bottom: var(--space-2xl); /* Was var(--space-lg, 30px) */
+  border-bottom: var(--border-width-md) solid var(--color-border-subtle); /* Was var(--border-width-sm, 2px) */
+  flex-wrap: wrap; /* Allow tabs to wrap on smaller screens */
+}
+
+.tab-button {
+  padding: var(--space-md) var(--space-lg); /* Adjusted padding for icon space */
+  font-size: var(--font-size-md); 
+  font-weight: var(--font-weight-semibold); 
+  background-color: transparent;
+  color: var(--color-text-secondary); 
+  border: none;
+  border-bottom: var(--border-width-lg, 4px) solid transparent; /* Slightly thicker underline base */
+  cursor: pointer;
+  transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out, background-color 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  margin: 0 var(--space-xs); /* Was 0 var(--space-xs, 5px) */
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0; 
+  position: relative; /* For potential pseudo-elements or future enhancements */
+  outline: none; /* Remove default outline, we will use focus-visible */
+  display: inline-flex; /* For aligning icon and text */
+  align-items: center;
+  gap: var(--space-sm, 8px); /* Space between icon and text */
+  opacity: 0.75; /* Slightly dim inactive tabs */
+}
+
+.tab-icon {
+  font-size: var(--font-size-lg, 1.15rem); /* Adjust icon size if needed */
+  line-height: 1; /* Ensure icon doesn't affect line height too much */
+}
+
+.tab-button:hover {
+  color: var(--color-text-primary); 
+  background-color: var(--color-bg-header); /* Was var(--color-bg-metric-item-hover) */
+  opacity: 1;
+}
+
+.tab-button.active {
+  color: var(--color-accent-primary); /* Use accent color for active tab text for prominence */
+  border-bottom-color: var(--color-accent-primary); 
+  background-color: transparent; /* Ensure active tab doesn't have the hover background unless also hovered */
+  opacity: 1; /* Full opacity for active tab */
+  font-weight: var(--font-weight-bold, 700); /* Bolder active tab text */
+}
+
+.tab-button.active:hover {
+  background-color: var(--color-bg-header); /* Was var(--color-bg-metric-item-hover) */
+  color: var(--color-accent-primary-darker); /* Slightly darken text on hover for active tab */
+}
+
+.tab-button:focus-visible {
+  /* More prominent focus style */
+  outline: var(--border-width-md) solid var(--color-accent-primary); /* Was var(--border-width-sm, 2px) */
+  outline-offset: var(--space-xxs); /* Was var(--space-xxs, 2px) */
+  box-shadow: var(--shadow-button-focus); /* Was 0 0 0 4px var(--color-accent-primary-alpha-25) */
+  border-bottom-color: var(--color-accent-primary); /* Ensure underline is visible on focus if it's also active */
+  color: var(--color-text-primary); /* Ensure text color is primary on focus if not active */
+}
+
+/* Ensure active focused tab maintains its active styling for border and text color */
+.tab-button.active:focus-visible {
+    color: var(--color-accent-primary); /* Keep active text color */
+    border-bottom-color: var(--color-accent-primary); /* Keep active border color */
+    /* The box-shadow from .tab-button:focus-visible will still apply */
+}
+
+.tab-panel:focus-visible {
+  outline: var(--border-width-md) solid var(--color-accent-primary); /* Was var(--border-width-sm, 2px) */
+  outline-offset: calc(-1 * var(--space-xxs)); /* Was calc(-1 * var(--space-xxs, 2px)) */
+  box-shadow: var(--shadow-panel-focus); /* Use variable */
+  border-radius: var(--radius-md); /* Match card radius if outline is offset */
+}
+
+/* Tab Content Spinner */
+.tab-content-spinner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3xl) var(--space-xl); /* Was var(--space-xl, 40px) var(--space-lg-alt, 20px) */
+  min-height: 200px; /* Ensure it has some height */
+  width: 100%;
+}
+
+.tab-content-spinner-container .spinner {
+  /* Spinner styles are already defined globally */
+  margin-bottom: var(--space-lg); /* Was var(--space-md-alt, 15px) */
+}
+
+.tab-content-spinner-container p {
+  font-size: var(--font-size-body); /* Was var(--font-size-md, 1rem) */
+  color: var(--color-text-secondary);
+  margin: 0;
+} 

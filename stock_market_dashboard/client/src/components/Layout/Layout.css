@@ -1,0 +1,62 @@
+/* ==========================================================================
+   Main App Layout (.App, .App-header)
+   ========================================================================== */
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: var(--color-bg-header); 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: var(--space-xl, 30px); /* Increased top padding */
+  font-size: calc(var(--font-size-base-unit) + 1.5vmin); /* Was var(--font-size-base-unit, 10px) */
+  color: var(--color-text-primary); 
+  padding-left: var(--space-xl); /* Was var(--space-lg-alt, 20px) */
+  padding-right: var(--space-xl); /* Was var(--space-lg-alt, 20px) */
+  padding-bottom: var(--space-2xl, 40px); /* Increased bottom padding */
+  overflow-y: auto; 
+}
+
+/* Logo and Header Title */
+.logo-placeholder {
+  font-size: var(--font-size-logo); /* Was var(--font-size-logo, 3rem) */
+  margin-bottom: var(--space-md, 15px); /* Increased space below logo */
+  color: var(--color-accent-primary); 
+  line-height: 1; 
+  filter: drop-shadow(0 var(--shadow-offset-y-sm) var(--shadow-blur-sm) var(--color-shadow-alpha-30)); /* Was 0 var(--shadow-offset-y-sm, 2px) var(--shadow-blur-sm, 3px) var(--color-shadow-alpha-30, rgba(0,0,0,0.3)) */
+  animation: fadeInUp 0.5s 0.2s ease-out forwards; 
+  opacity: 0; 
+}
+
+.logo-placeholder span {
+  display: inline-block; 
+  transition: transform 0.3s ease-in-out;
+}
+
+.logo-placeholder:hover span {
+  transform: scale(1.1) rotate(-5deg); 
+}
+
+.App-header > h1 {
+  font-size: var(--font-size-4xl); /* Was var(--font-size-h1, 2.4rem) */
+  font-weight: var(--font-weight-semibold); /* Was var(--font-weight-bold, 700) */
+  color: var(--color-text-white);
+  margin-top: var(--space-sm, 10px); /* Added margin-top for space from logo */
+  margin-bottom: var(--space-3xl, 50px); /* Increased space below title, before search */
+  padding-bottom: var(--space-lg); /* Was var(--space-md, 15px) */
+  border-bottom: var(--border-width-md) solid var(--color-accent-primary); /* Was var(--border-width-md, 3px) */
+  display: inline-block; 
+  letter-spacing: var(--letter-spacing-xs); /* Was var(--letter-spacing-xs, 0.2px) */
+  animation: fadeInUp 0.5s 0.4s ease-out forwards; 
+  opacity: 0; 
+} 
+
+/* Styles for the company name header above tabs */
+.stock-data-container > h2 {
+  margin-top: var(--space-lg, 20px);
+  margin-bottom: var(--space-lg, 20px); /* Space between company name and tabs */
+  font-size: var(--font-size-3xl, 2rem); /* Adjust as needed */
+  color: var(--color-text-primary);
+} 

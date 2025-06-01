@@ -1,0 +1,36 @@
+.error-boundary-card {
+  background-color: #fff0f0; /* Light reddish background for error */
+  border: 1px solid #d9534f; /* Red border */
+  color: #a94442; /* Dark red text */
+  padding: 20px;
+  margin: 20px auto;
+  border-radius: 8px;
+  text-align: left;
+  max-width: 800px; /* Consistent with other cards */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.error-boundary-card h2 {
+  color: #d9534f; /* Red heading */
+  margin-top: 0;
+}
+
+.error-boundary-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.error-boundary-card details {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #f9f2f4;
+  border: 1px dashed #c9302c;
+  border-radius: 4px;
+  font-size: 0.9em;
+  color: #333; /* Details text color */
+}
+
+.error-boundary-card summary {
+  cursor: pointer;
+  font-weight: bold;
+} 

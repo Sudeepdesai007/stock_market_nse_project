@@ -1,0 +1,179 @@
+:root {
+  /* --- Apple Design Inspired Theme --- */
+
+  /* Radii */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+
+  /* Background Colors */
+  --color-bg-body: #161617;
+  --color-bg-header: #1D1D1F;
+  --color-bg-card: #1D1D1F;
+  --color-bg-grid-item: #2C2C2E;
+  --color-bg-input: #2C2C2E; 
+  --color-bg-table-stripe: #232325;
+  --color-bg-table-row-hover: #303032; 
+  --color-bg-metric-item-hover: #2A2A2C;
+  --color-bg-tooltip: #313133;
+  --color-bg-code-block: var(--color-bg-body); /* Added for raw data pre */
+
+  /* Text Colors */
+  --color-text-primary: rgba(255, 255, 255, 0.92);
+  --color-text-secondary: rgba(235, 235, 245, 0.65);
+  --color-text-muted: rgba(235, 235, 245, 0.45);
+  --color-text-muted-alt: rgba(235, 235, 245, 0.55);
+  --color-text-white: #FFFFFF;
+  --color-text-code-block: var(--color-text-primary); /* Added for raw data pre */
+
+  /* Accent Colors */
+  --color-accent-primary: #0A84FF;
+  --color-accent-primary-darker: #0060D1; 
+  --color-accent-primary-darkest: #00408F; 
+  --color-accent-light: #50A5FF; 
+
+  /* Border Colors */
+  --color-border-subtle: rgba(120, 120, 128, 0.22);
+  --color-border-input: rgba(120, 120, 128, 0.35);
+
+  /* Semantic Colors */
+  --color-positive: #30D158;
+  --color-negative: #FF453A;
+  --color-warning: #FF9F0A;
+  --color-error: var(--color-negative);
+  --color-info: var(--color-accent-primary);
+
+  /* Strong Semantic Text Colors (can be same as base or slightly adjusted for contrast on subtle BGs) */
+  --color-success-text-strong: var(--color-positive);
+  --color-danger-text-strong: var(--color-negative);
+  --color-warning-text-strong: var(--color-warning); /* Or a darker shade if needed */
+
+  /* Subtle Semantic Border Colors */
+  --color-success-border-subtle: rgba(48, 209, 88, 0.4);  /* --color-positive with alpha */
+  --color-danger-border-subtle: rgba(255, 69, 58, 0.4);   /* --color-negative with alpha */
+  --color-warning-border-subtle: rgba(255, 159, 10, 0.4); /* --color-warning with alpha */
+
+  /* Alpha Colors */
+  --color-accent-primary-alpha-20: rgba(10, 132, 255, 0.2);
+  --color-accent-primary-alpha-25: rgba(10, 132, 255, 0.25);
+  --color-accent-primary-alpha-30: rgba(10, 132, 255, 0.3);
+  --color-accent-primary-alpha-35: rgba(10, 132, 255, 0.35);
+  --color-bg-sticky-form-alpha-85: rgba(29, 29, 31, 0.85);
+  --color-bg-sticky-form-alpha-90: rgba(29, 29, 31, 0.92);
+  --color-accent-light-alpha-10: rgba(80, 165, 255, 0.1);
+  --color-accent-light-alpha-15: rgba(80, 165, 255, 0.15);
+  --color-accent-light-translucent: rgba(80, 165, 255, 0.2); /* Added for example buttons */
+  --color-accent-light-translucent-hover: rgba(80, 165, 255, 0.35); /* Added for example buttons hover */
+  
+  /* Subtle Semantic Background Colors */
+  --color-success-background-subtle: rgba(48, 209, 88, 0.1);
+  --color-negative-bg-alpha-10: rgba(255, 69, 58, 0.1);
+  --color-warning-bg-alpha-10: rgba(255, 159, 10, 0.1);
+
+  /* Box Shadows */
+  --shadow-card-base: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-card-hover: 0 3px 8px rgba(0,0,0,0.12), 0 2px 5px rgba(0,0,0,0.08);
+  --shadow-sticky-form-softer: 0 2px 6px rgba(0,0,0,0.15);
+  --shadow-input-focus: 0 0 0 3px var(--color-accent-primary-alpha-30);
+  --shadow-button-focus: 0 0 0 3px var(--color-accent-primary-alpha-35);
+  --shadow-panel-focus: 0 0 0 3px var(--color-accent-primary-alpha-20);
+  --shadow-form-focus-within: 0 0 10px var(--color-accent-primary-alpha-25);
+  --shadow-tooltip: 0 3px 10px rgba(0,0,0,0.18);
+  --shadow-scroll-to-top: 0 3px 8px rgba(0, 0, 0, 0.2);
+  --shadow-welcome-card: 0 6px 20px rgba(0,0,0,0.15);
+  --shadow-grid-item: 0 2px 8px rgba(0,0,0,0.12);
+  --shadow-metric-item-hover: 0 3px 7px rgba(0,0,0,0.18);
+
+  /* Typography */
+  --font-family-primary: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-family-monospace: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Standard Font Size Scale (combining JS theme and Apple common sizes) */
+  --font-size-xxs: 0.75rem;     /* 12px (JS: --font-size-xs) */
+  --font-size-xs: 0.8125rem;   /* 13px (Apple common small text) */
+  --font-size-sm: 0.875rem;     /* 14px (JS: --font-size-sm) */
+  --font-size-md: 1rem;         /* 16px (JS: --font-size-base, our old --font-size-md) - Primary Base */
+  --font-size-lg: 1.125rem;     /* 18px (JS: --font-size-md, our old --font-size-lg-alt/lg) */
+  --font-size-xl: 1.25rem;      /* 20px (JS: --font-size-lg, our old --font-size-xl) */
+  --font-size-2xl: 1.5rem;      /* 24px (JS: --font-size-xl, our old --font-size-xxl) */
+  --font-size-3xl: 1.875rem;    /* 30px (JS: --font-size-2xl, our old --font-size-xxxl) */
+  --font-size-4xl: 2.25rem;     /* 36px (JS: --font-size-3xl) */
+  --font-size-5xl: 3rem;        /* 48px (JS: --font-size-4xl) */
+
+  /* Mapping previous custom/specific font sizes to the new scale or defining as contextual aliases */
+  --font-size-caption: var(--font-size-xxs);      /* Was various <0.875rem like 0.85, 0.88 */
+  --font-size-body-small: var(--font-size-sm);    /* Was various ~0.9rem, 0.92, 0.95 */
+  --font-size-body: var(--font-size-md);
+  --font-size-subheader: var(--font-size-lg);     /* Was 1.1rem, 1.05rem */
+  --font-size-header-3: var(--font-size-xl);      /* Was 1.25rem, 1.3rem */
+  --font-size-header-2: var(--font-size-2xl);     /* Was 1.4rem, 1.6rem */
+  --font-size-header-1: var(--font-size-3xl);     /* Was 1.8rem */
+  
+  /* Specific Component Font Sizes (Review if these can use the scale) */
+  --font-size-logo: var(--font-size-4xl);         /* Was 2.5rem, now maps to 3rem / 48px */
+  --font-size-h1-layout: var(--font-size-3xl);    /* Was 2rem, now maps to 1.875rem / 30px for App Header title */
+  --font-size-base-unit: 10px;                  /* Kept for calc() in App-header, review usage */
+
+  /* Icon Font Sizes (can be t-shirt sized or specific) */
+  --font-size-icon-sm: 1rem;    /* 16px */
+  --font-size-icon-md: 1.25rem; /* 20px - (was --icon-size-md: 18px, Info icon) - now slightly larger */
+  --font-size-icon-lg: 1.5rem;  /* 24px - (was 2.25rem Shrug icon) - now smaller */
+  --font-size-icon-xl: 1.75rem; /* 28px - (was 1.625rem Scroll to top text) - now slightly larger */
+  
+  /* Physical Icon Sizes (for width/height if not font based) */
+  --size-icon-sm: 16px;
+  --size-icon-md: 20px;         /* (was --icon-size-md: 18px) */
+  --size-icon-lg: 28px;         /* (was --size-icon-xl: 36px for spinner) - now smaller spinner */
+  --size-icon-xl: 36px;         /* (was --size-icon-xxl: 44px for scroll-to-top button) - now smaller button */
+
+  /* Line Heights (from JS theme) */
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.4;
+  --line-height-relaxed: 1.6;
+  --line-height-base: var(--line-height-normal); /* Alias */
+  --line-height-md: var(--line-height-normal);   /* Mapped from previous */
+
+  /* Spacing (Using JS Theme's unit-based system) */
+  --spacing-unit: 8px;
+  --space-xxs: calc(0.25 * var(--spacing-unit));  /* 2px (New smaller step) */
+  --space-xs: calc(0.5 * var(--spacing-unit));    /* 4px (Was 6px, JS has 4px) */
+  --space-sm: var(--spacing-unit);                /* 8px (Matches JS) */
+  --space-md: calc(1.5 * var(--spacing-unit));    /* 12px (Matches JS) */
+  --space-lg: calc(2 * var(--spacing-unit));      /* 16px (Was 20px, JS has 16px) */
+  --space-xl: calc(3 * var(--spacing-unit));      /* 24px (Was 32px, JS has 24px) */
+  --space-2xl: calc(4 * var(--spacing-unit));     /* 32px (Matches JS) */
+  --space-3xl: calc(5 * var(--spacing-unit));     /* 40px (Was 40px, Matches JS) */
+  --space-4xl: calc(6 * var(--spacing-unit));     /* 48px (Matches JS) */
+
+  /* Mapping previous custom/alt spacing to the new scale */
+  --space-xxs-alt: var(--space-xs);             /* Was 4px, now maps to 4px */
+  --space-md-alt: var(--space-lg);              /* Was 16px, now maps to 16px */
+  --space-lg-alt: var(--space-xl);              /* Was 24px, now maps to 24px */
+
+  /* Borders */
+  --border-width-xs: 1px; 
+  --border-width-sm: 1.5px;
+  --border-width-md: 2px;   
+  --border-width-lg: 6px;   /* Tooltip arrow */
+  --border-width-xl: 4px;   /* Spinner, error card left border */
+  --border-width-arrow: var(--border-width-lg);
+  
+  --color-border-default: var(--color-border-subtle);
+  --color-border-accent: var(--color-accent-primary);
+
+  /* Other custom values (Review if they can be mapped to theme scales) */
+  --blur-sm: 8px;
+  --shadow-offset-y-sm: 1px;
+  --shadow-blur-sm: 3px;
+  --color-shadow-alpha-30: rgba(0,0,0,0.2);
+  --letter-spacing-xs: 0.1px;
+  --shadow-spread-sm: 2px;
+  --dot-size-sm: 8px;        
+  --scrollbar-size: 8px;
+} 

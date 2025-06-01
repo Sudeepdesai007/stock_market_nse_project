@@ -1,0 +1,13 @@
+/* ==========================================================================
+   Global Reset & Base Styles
+   ========================================================================== */
+body {
+  margin: 0;
+  background-color: var(--color-bg-body);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-base);
+  -webkit-font-smoothing: antialiased; /* For smoother fonts on WebKit */
+  -moz-osx-font-smoothing: grayscale; /* For smoother fonts on Firefox */
+} 

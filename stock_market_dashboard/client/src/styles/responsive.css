@@ -1,0 +1,313 @@
+/* ==========================================================================
+   Media Queries & Responsive Adjustments
+   ========================================================================== */
+/* Note: Some media queries are already nested with their components, which is good. */
+/* This section for any global responsive adjustments or overrides. */
+
+/* Responsive adjustments for analysis grids */
+/* The @media (max-width: 900px) rule for .analysis-metric-grid is no longer needed 
+   as auto-fit in AnalysisTab.css handles this. */
+
+@media (max-width: 600px) { 
+  /* === Global Grid Overrides === */
+  .cards-grid-area {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg); /* Keep some gap, was space-xl */
+  }
+
+  .analysis-metric-grid,
+  .oscillator-bands-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-md); 
+  }
+
+  /* === Card.css Mobile Adjustments === */
+  .card {
+    padding: var(--space-md) var(--space-lg);
+  }
+  .card h3 { /* Base card headers */
+    font-size: var(--font-size-lg); /* Was header-3 (1.25rem) */
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-sm);
+  }
+  .metric-category-card > h3,
+  .historical-data-tab-content.card > h3 { /* Accented headers */
+    font-size: var(--font-size-xl); /* Was header-2 (1.5rem) */
+    padding-bottom: var(--space-md);
+    margin-bottom: var(--space-lg);
+  }
+  .grid-item-card {
+    padding: var(--space-md);
+  }
+  .company-profile-desc .description {
+    font-size: var(--font-size-xs); /* Smaller for mobile */
+  }
+  .company-overview p {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: var(--space-xs);
+    padding-bottom: var(--space-md); 
+  }
+  .company-overview p strong {
+    margin-right: 0;
+    margin-bottom: var(--space-xxs); /* Tighter spacing */
+    min-width: auto; 
+  }
+  .company-overview p span {
+    text-align: left;
+    word-break: break-word; 
+  }
+  .welcome-card,
+  .loading-indicator-card,
+  .centered-message-card {
+    padding: var(--space-xl) var(--space-lg);
+    margin-top: var(--space-2xl);
+  }
+  .welcome-card h3, 
+  .centered-message-card h3 {
+    font-size: var(--font-size-xl); /* Was header-1 / header-2 */
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-md);
+  }
+  .error-message-card {
+    padding: var(--space-lg);
+    margin-top: var(--space-xl);
+  }
+  .error-message-card h4 {
+    font-size: var(--font-size-lg);
+  }
+  .error-message-card p,
+  .welcome-card p,
+  .centered-message-card p {
+    font-size: var(--font-size-sm);
+  }
+  .shrug-icon {
+    font-size: var(--font-size-icon-md);
+    margin-bottom: var(--space-xs);
+  }
+  .no-data-message {
+    padding: var(--space-lg);
+    font-size: var(--font-size-sm);
+    margin-top: var(--space-lg);
+  }
+  .raw-data pre {
+    padding: var(--space-md);
+    font-size: var(--font-size-xxs);
+  }
+
+  /* === Table.css Mobile Adjustments === */
+  table td,
+  table th {
+    padding: var(--space-xs) var(--space-sm);
+    font-size: var(--font-size-xs); /* Smaller font for table cells */
+  }
+  .peer-companies-section table td:first-child,
+  .peer-companies-section table th:first-child {
+    min-width: 120px; /* Reduce min-width for first column */
+  }
+  .table-scroll-wrapper::after { /* Ensure fade is visible if needed */
+    width: var(--space-xl); /* Was 30px in a specific case, general var(--space-2xl) */
+    opacity: 0.7; /* Make it more visible on mobile if scroll is present */
+  }
+  .peer-companies-section .table-scroll-wrapper::after { /* Override more specific one if needed */
+    width: var(--space-xl);
+    background: linear-gradient(to left, var(--color-bg-card), transparent);
+  }
+
+  /* === Layout.css Mobile Adjustments === */
+  .App-header {
+    padding-top: var(--space-md);
+    padding-left: var(--space-lg);
+    padding-right: var(--space-lg);
+    padding-bottom: var(--space-lg);
+  }
+  .logo-placeholder {
+    font-size: var(--font-size-3xl); /* Was 4xl */
+    margin-bottom: var(--space-xxs);
+  }
+  .App-header > h1 {
+    font-size: var(--font-size-2xl); /* Was 4xl */
+    margin-bottom: var(--space-xl);
+    padding-bottom: var(--space-md);
+  }
+
+  /* === Content.css Mobile Adjustments === */
+  .stock-data-container {
+    width: 95%; /* Closer to full width */
+    margin-top: var(--space-lg);
+    margin-bottom: var(--space-2xl);
+  }
+  .stock-data-container h2 { /* Company Name Title */
+    font-size: var(--font-size-xl); /* Was header-1 */
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-xs);
+  }
+
+  /* === StockSearchForm.css Mobile Adjustments === */
+  .stock-form {
+    width: 90%;
+    padding: var(--space-md);
+    top: var(--space-sm);
+    gap: var(--space-xs);
+  }
+  .stock-input {
+    padding: var(--space-sm) var(--space-md);
+    font-size: var(--font-size-sm);
+    padding-right: var(--space-xl); /* Ensure space for clear button */
+  }
+  .stock-input.animated-placeholder:not(:focus) {
+    padding-right: calc(var(--space-xl) + var(--space-xs));
+  }
+  .stock-input.has-value {
+    padding-left: calc(var(--space-md) - var(--space-xxs));
+  }
+  .clear-input-button {
+    font-size: var(--font-size-xl);
+    right: var(--space-xxs);
+  }
+  .fetch-button {
+    padding: var(--space-sm) var(--space-lg);
+    font-size: var(--font-size-sm);
+    flex-grow: 1; /* Allow button to grow if input is short */
+    min-width: 100px;
+  }
+  .stock-form {
+    flex-direction: column; /* Stack input and button */
+    align-items: stretch; /* Make items take full width */
+  }
+  .stock-input-wrapper {
+    width: 100%;
+  }
+  .fetch-button {
+    width: 100%;
+  }
+
+  /* === HistoricalDataTab.css Mobile Adjustments === */
+  .historical-controls {
+    padding: var(--space-md);
+    gap: var(--space-md);
+    flex-direction: column; /* Stack control groups */
+    align-items: stretch;
+  }
+  .control-group {
+    justify-content: space-between;
+    width: 100%;
+  }
+  .historical-controls label {
+    font-size: var(--font-size-xs);
+  }
+  .historical-controls select {
+    padding: var(--space-xs) var(--space-sm);
+    font-size: var(--font-size-xs);
+    flex-grow: 1; /* Allow select to take available space in control group */
+  }
+  .chart-container {
+    padding: var(--space-md);
+    height: 300px; /* Reduce chart height */
+  }
+
+  /* === Tabs.css Mobile Adjustments === */
+  .tabs-navigation {
+    margin-bottom: var(--space-xl);
+    justify-content: flex-start; /* Align tabs to start for scrolling */
+    overflow-x: auto; /* Allow horizontal scrolling for tabs */
+    white-space: nowrap; /* Prevent tabs from wrapping */
+  }
+  .tab-button {
+    padding: var(--space-sm) var(--space-md);
+    font-size: var(--font-size-sm);
+    margin: 0 var(--space-xxs); /* Reduce margin between tabs */
+  }
+
+  /* === ExecutiveCard.css (already partially handled) === */
+  .executive-card {
+    padding: var(--space-md); 
+    align-items: flex-start; /* Ensure consistent alignment */
+  }
+  .executive-accent-bar {
+    width: var(--space-xxs); 
+    margin-right: var(--space-sm); 
+  }
+  .executive-title {
+    font-size: var(--font-size-body); /* Was lg */
+    line-height: var(--line-height-normal);
+  }
+  .executive-name {
+    font-size: var(--font-size-xs); /* Was body-small */
+  }
+  .executive-tenure {
+    font-size: var(--font-size-xxs);
+  }
+
+  /* === MetricItem.css (already partially handled) === */
+  .metric-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-xxs); 
+    padding: var(--space-xs) var(--space-sm); 
+  }
+  .metric-label {
+    min-width: auto; 
+    margin-bottom: 0; 
+    font-size: var(--font-size-xs); 
+    font-weight: var(--font-weight-normal); 
+    gap: var(--space-xxs); 
+    /* flex-wrap: nowrap; Removed */
+    /* display: inline-flex; /* Ensure icon aligns with text if it wraps - testing this */
+  }
+  .metric-label strong {
+    overflow-wrap: break-word; /* Allow label text to wrap */
+    word-break: break-word; /* Older browser support */
+    flex-grow: 1; /* Allow text to take available space before icon */
+  }
+  .metric-label .info-icon-container {
+    margin-left: 0; /* Remove default margin, rely on gap */
+    flex-shrink: 0; /* Prevent icon from shrinking */
+  }
+  .metric-label .info-icon-container .info-icon {
+    width: var(--size-icon-sm); /* Smaller icon on mobile: 16px */
+    height: var(--size-icon-sm);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor' width='16px' height='16px'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z'/%3E%3C/svg%3E"); /* SVG width/height updated to 16px */
+  }
+
+  .metric-value-content-wrapper {
+    align-items: flex-start;
+    text-align: left;
+    width: 100%; 
+  }
+  .metric-value {
+    text-align: left;
+    font-size: var(--font-size-xs); 
+    margin-left: 0; 
+    font-weight: var(--font-weight-medium); 
+    word-break: break-word; 
+  }
+  .metric-peer-average-subline,
+  .metric-yoy-growth {
+    text-align: left;
+    margin-left: 0; 
+    font-size: var(--font-size-xxs); /* Was 0.85em, now explicit 12px */
+    margin-top: var(--space-xxs); 
+    word-break: break-word; 
+  }
+
+  /* === Utilities.css Mobile Adjustments === */
+  .scroll-to-top-button {
+    width: var(--space-3xl); /* Was 4xl (48px) -> 40px */
+    height: var(--space-3xl);
+    font-size: var(--font-size-icon-lg); /* Was icon-xl (1.75rem) -> 1.5rem */
+    bottom: var(--space-lg);
+    right: var(--space-lg);
+  }
+  .card-internal-button {
+    padding: var(--space-xs) var(--space-md);
+    font-size: var(--font-size-xs);
+  }
+
+}
+
+/* Ensure App-header specific media queries are grouped if any exist or are added later */
+/* @media (max-width: ...) { .App-header { ... } } */
+
+/* Ensure .stock-form specific media queries are grouped if any exist or are added later */
+/* @media (max-width: ...) { .stock-form { ... } } */ 

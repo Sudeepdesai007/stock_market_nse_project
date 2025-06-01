@@ -1,0 +1,201 @@
+/* ==========================================================================
+   Utility & Helper Classes
+   ========================================================================== */
+/* Spinner (global) */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.spinner {
+  border-width: var(--border-width-xl);
+  border-style: solid;
+  border-color: var(--color-border-subtle);
+  border-top-width: var(--border-width-xl);
+  border-top-style: solid;
+  border-top-color: var(--color-accent-primary);
+  border-radius: 50%;
+  width: var(--size-icon-xl);
+  height: var(--size-icon-xl);
+  animation: spin 1s linear infinite;
+}
+
+/* Card Internal Buttons (e.g., View More/Less) */
+.card-internal-button {
+  background-color: transparent;
+  color: var(--color-accent-light); 
+  border-width: var(--border-width-xs);
+  border-style: solid;
+  border-color: var(--color-accent-light);
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-sm); 
+  cursor: pointer;
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-body-small);
+  text-align: center;
+  margin-top: auto; 
+  margin-left: auto; 
+  margin-right: auto; 
+  display: block; 
+  max-width: 200px; 
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+/* Modify collapsed state to be more subtle */
+.card-internal-button.view-more-less-button.collapsed {
+  background-color: transparent;
+  border-width: var(--border-width-xs);
+  border-style: solid;
+  border-color: var(--color-border-subtle); /* More subtle border */
+  color: var(--color-text-muted); /* Muted text color */
+}
+
+.card-internal-button.view-more-less-button.collapsed:hover {
+  background-color: var(--color-accent-light-alpha-10); /* Was var(--color-accent-light-alpha-10, rgba(114, 137, 218, 0.1)) */
+  border-color: var(--color-accent-light);
+  color: var(--color-accent-light);
+}
+
+.card-internal-button:focus-visible {
+  outline-width: var(--border-width-md);
+  outline-style: solid;
+  outline-color: var(--color-accent-primary);
+  outline-offset: var(--space-xxs);
+}
+
+.card-internal-button:hover {
+  background-color: var(--color-accent-light-alpha-15);  /* Was var(--color-accent-light-alpha-15, rgba(114, 137, 218, 0.15)) */
+  color: var(--color-text-primary);
+}
+
+.card-internal-button:active {
+  background-color: var(--color-accent-primary-alpha-20); /* Was var(--color-accent-primary-alpha-20, rgba(88, 101, 242, 0.2)) */
+  color: var(--color-text-primary);
+}
+
+.metric-category-card .metrics-list + .card-internal-button { /* Spacing */
+    margin-top: var(--space-xl);
+}
+
+/* View More/Less Button (with Arrow Icon) */
+.view-more-less-button {
+  display: inline-flex; /* Align icon and text */
+  align-items: center;
+  justify-content: center; /* Center content if button is wider */
+}
+
+.view-more-less-button::before { /* Arrow base */
+  content: '';
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  margin-right: var(--space-sm);
+  transition: transform 0.2s ease-in-out;
+}
+
+.view-more-less-button.collapsed::before { /* Right arrow */
+  border-width: var(--space-xs) 0 var(--space-xs) var(--space-sm);
+  border-color: transparent transparent transparent var(--color-text-muted); /* Match muted text color */
+}
+
+.view-more-less-button.expanded::before { /* Up arrow */
+  border-width: 0 var(--space-xs) var(--space-sm) var(--space-xs); /* Top, Right, Bottom, Left widths */
+  border-color: transparent transparent var(--color-accent-light) transparent; /* Top, Right, Bottom, Left colors */
+  transform: translateY(calc(-1 * var(--space-xxs))); /* Adjust vertical alignment if needed */
+}
+
+.view-more-less-button:hover.collapsed::before {
+  border-color: transparent transparent transparent var(--color-accent-light); /* Match hover text color */
+}
+
+.view-more-less-button:hover.expanded::before {
+  border-color: transparent transparent var(--color-accent-primary) transparent; /* Color the BOTTOM border on hover */
+}
+
+/* Scroll-to-Top Button */
+.scroll-to-top-button {
+  position: fixed;
+  bottom: var(--space-2xl);
+  right: var(--space-2xl);
+  background-color: var(--color-accent-primary);
+  color: var(--color-text-white);
+  border: none;
+  border-radius: 50%; /* Circular button */
+  width: var(--space-4xl);
+  height: var(--space-4xl);
+  font-size: var(--font-size-icon-xl);
+  font-weight: var(--font-weight-semibold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-scroll-to-top);
+  opacity: 0.9;
+  transition: background-color 0.2s ease-in-out, opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+  z-index: 1050; /* Above most other elements */
+}
+
+.scroll-to-top-button:hover {
+  background-color: var(--color-accent-light);
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.scroll-to-top-button:focus-visible {
+  outline-width: var(--border-width-md);
+  outline-style: solid;
+  outline-color: var(--color-accent-primary);
+  outline-offset: var(--space-xs);
+  opacity: 1;
+}
+
+.scroll-to-top-button:active {
+  transform: scale(0.95);
+  background-color: var(--color-accent-primary-darkest); /* Even darker for active/pressed state */
+}
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+  width: var(--scrollbar-size);
+  height: var(--scrollbar-size);
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-tooltip); 
+  border-radius: var(--radius-sm);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-border-subtle); 
+  border-radius: var(--radius-sm);
+  border-width: var(--border-width-md);
+  border-style: solid;
+  border-color: var(--color-bg-tooltip);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-accent-primary); 
+}
+
+* { /* Firefox scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border-subtle) var(--color-bg-tooltip); 
+}
+
+/* Sentiment Value Text Colors (used in various places) */
+.sentiment-value.sentiment-positive {
+  color: var(--color-positive);
+}
+
+.sentiment-value.sentiment-negative {
+  color: var(--color-negative);
+}
+
+.sentiment-value.sentiment-neutral {
+  color: var(--color-warning); /* Or a specific neutral color if preferred */
+}
+
+.sentiment-value.sentiment-muted {
+  color: var(--color-text-muted); /* For errors or N/A data signals */
+} 

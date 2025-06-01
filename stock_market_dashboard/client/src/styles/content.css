@@ -1,0 +1,28 @@
+/* ==========================================================================
+   Stock Data Container & Main Content Area
+   ========================================================================== */
+.stock-data-container {
+  margin-top: var(--space-xl);
+  padding: 0;
+  background-color: transparent;
+  border-radius: 0;
+  width: 95%; 
+  max-width: 1200px; /* Increased max-width for grid */
+  box-shadow: none;
+  text-align: left;
+  margin-bottom: var(--space-4xl);
+  margin-left: auto; /* Added for explicit centering */
+  margin-right: auto; /* Added for explicit centering */
+}
+
+.stock-data-container h2 { /* Company Name Title */
+  font-size: var(--font-size-header-1);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin-top: var(--space-sm);
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-sm);
+  border-bottom: var(--border-width-md) solid var(--color-border-subtle);
+  text-align: center; /* Centered the company name title */
+  width: 100%; /* Ensure it takes full width to center properly */
+} 

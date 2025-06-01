@@ -1,0 +1,448 @@
+/* Analysis Tab Specifics */
+.analysis-tab-content {
+  position: relative;
+  z-index: 1001;
+}
+
+.analysis-tab-content .spinner {
+  margin-top: var(--space-2xl);
+  margin-bottom: var(--space-2xl);
+}
+
+.analysis-tab-content h3 { /* Title: "🔬 Technical Analysis" */
+  color: var(--color-accent-primary);
+  border-bottom-width: var(--border-width-md);
+  font-size: var(--font-size-header-2);
+  font-weight: var(--font-weight-semibold);
+  padding-bottom: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.analysis-results h4 { /* Sub-titles like "Moving Averages" */
+  font-size: var(--font-size-header-3);
+  color: var(--color-text-primary); 
+  margin-top: var(--space-xl);
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-sm);
+  border-bottom-width: var(--border-width-xs);
+  border-bottom-style: solid;
+  border-bottom-color: var(--color-border-subtle);
+  display: flex; 
+  align-items: center; 
+}
+
+.analysis-results h4:first-child {
+  margin-top: 0;
+}
+
+.analysis-metric-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.analysis-metric-item {
+  background-color: var(--color-bg-grid-item);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--font-size-sm);
+  border: var(--border-width-xs) solid var(--color-border-subtle);
+  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.analysis-metric-item:hover {
+  background-color: var(--color-bg-metric-item-hover); 
+  transform: translateY(calc(-1 * var(--space-xxs))) scale(1.02);
+  box-shadow: var(--shadow-metric-item-hover);
+}
+
+.analysis-metric-item .analysis-metric-label-text {
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+  margin-right: var(--space-sm);
+  white-space: nowrap;
+}
+
+.analysis-metric-item .analysis-metric-value-text {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold);
+  flex-grow: 1;
+  text-align: right;
+}
+
+/* Ensure conditional colors apply to the new class */
+.analysis-metric-value-text.change-positive-text {
+  color: var(--color-positive);
+}
+
+.analysis-metric-value-text.change-negative-text {
+  color: var(--color-negative);
+}
+
+.analysis-explanation {
+  font-size: var(--font-size-body-small);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-secondary);
+  background-color: var(--color-bg-tooltip);
+  padding: var(--space-lg);
+  border-radius: var(--radius-sm);
+  border: var(--border-width-xs) solid var(--color-border-subtle);
+}
+
+.analysis-explanation p {
+  margin: 0 0 var(--space-sm) 0;
+}
+
+.analysis-explanation p:last-child {
+  margin-bottom: 0;
+}
+
+.analysis-explanation strong {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.oscillator-bands-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-md);
+}
+
+/* Technical Signal Section (within Analysis) */
+.technical-signal-section.card {
+  margin-top: var(--space-lg);
+  margin-bottom: var(--space-xl);
+  padding: var(--space-lg) var(--space-xl);
+  border-top-width: var(--border-width-xs);
+  border-top-style: solid;
+  border-top-color: var(--color-border-subtle);
+  background-color: var(--color-bg-card);
+  border-radius: var(--radius-md); 
+}
+
+.technical-signal-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-lg);
+  font-size: var(--font-size-header-3);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+/* Override default info icon color to match heading text, then revert to accent on hover/focus */
+.technical-signal-heading .info-icon-container .info-icon {
+  color: var(--color-text-primary); 
+}
+
+.technical-signal-heading .info-icon-container:hover .info-icon,
+.technical-signal-heading .info-icon-container:focus-within .info-icon {
+  color: var(--color-accent-primary);
+}
+
+.heading-text-with-icon {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.technical-signal-section .sentiment-value {
+  font-weight: var(--font-weight-bold);
+  margin-left: var(--space-sm);
+  display: inline-flex; 
+  align-items: center;
+}
+
+.technical-signal-section .sentiment-icon {
+  margin-right: var(--space-sm);
+  font-size: 1.2em; 
+  line-height: 1; 
+}
+
+.technical-signal-section .sentiment-scores-container {
+  font-size: 0.9em; 
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  padding: var(--space-sm) 0;
+  background-color: var(--color-bg-tooltip);
+  border-radius: var(--radius-sm);
+}
+
+.technical-signal-section .sentiment-score-label {
+  margin-right: var(--space-lg);
+  font-weight: var(--font-weight-medium);
+}
+
+.technical-signal-section .sentiment-score-divider {
+  margin: 0 var(--space-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-border-subtle);
+}
+
+.technical-signal-section .bullish-score-value {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-positive);
+}
+
+.technical-signal-section .bearish-score-value {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-negative);
+}
+
+.contributing-factors-heading {
+  margin-top: var(--space-xl);
+  margin-bottom: var(--space-sm);
+  font-size: var(--font-size-subheader);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+}
+
+.contributing-factors-list .factor-item {
+  margin-bottom: var(--space-sm);
+  display: flex;
+  align-items: center;
+  padding: var(--space-xs) 0;
+  border-bottom-width: var(--border-width-xs);
+  border-bottom-style: solid;
+  border-bottom-color: var(--color-border-subtle);
+}
+
+.contributing-factors-list .factor-item:last-child {
+  border-bottom: none;
+}
+
+.technical-signal-section .bullish-factor-dot,
+.technical-signal-section .bearish-factor-dot,
+.neutral-factor-dot {
+  display: inline-block;
+  min-width: var(--dot-size-sm);
+  width: var(--dot-size-sm);
+  height: var(--dot-size-sm);
+  border-radius: 50%;
+  margin-right: var(--space-sm);
+  flex-shrink: 0;
+}
+
+.technical-signal-section .bullish-factor-dot {
+  background-color: var(--color-positive);
+}
+
+.technical-signal-section .bearish-factor-dot {
+  background-color: var(--color-negative);
+}
+
+.neutral-factor-dot {
+  background-color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+.sentiment-status-message {
+  color: var(--color-warning);
+  font-weight: var(--font-weight-medium);
+  text-align: center;
+  margin: var(--space-lg) 0;
+}
+
+/* Analysis Status Message (Error/Warning banners) */
+.analysis-status-message {
+  padding: var(--space-xl) var(--space-xl);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-xl);
+  border-left-style: solid;
+  border-left-color: transparent;
+}
+
+.analysis-status-message h4 {
+  margin-top: 0;
+  font-size: var(--font-size-header-3);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-sm);
+}
+
+.analysis-status-message p {
+  font-size: var(--font-size-body-small);
+  line-height: var(--line-height-relaxed);
+  margin: 0 0 var(--space-sm) 0;
+}
+
+.analysis-status-message.error {
+  background-color: var(--color-negative-bg-alpha-10);
+  border-left-width: var(--border-width-xl);
+  border-left-color: var(--color-negative);
+  color: var(--color-text-primary);
+}
+
+.analysis-status-message.error h4 {
+  color: var(--color-negative);
+}
+
+.analysis-status-message.warning {
+  background-color: var(--color-warning-bg-alpha-10);
+  border-left-width: var(--border-width-xl);
+  border-left-color: var(--color-warning);
+  color: var(--color-text-primary);
+}
+
+.analysis-status-message.warning h4 {
+  color: var(--color-warning);
+}
+
+/* Styles for indicator section cards to be consistent with general website card UI */
+.indicator-section-card {
+  background-color: var(--color-bg-card);
+  padding: var(--space-lg); /* Standard card padding */
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-xl);
+  box-shadow: var(--shadow-card-base); /* Standard static shadow */
+  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.indicator-section-card:hover {
+  background-color: var(--color-bg-metric-item-hover); /* Can be a general card hover bg if available */
+  transform: translateY(calc(-1 * var(--space-xxs))) scale(1.005);
+  box-shadow: var(--shadow-card-hover); /* Standard card hover shadow */
+}
+
+.indicator-section-card h4 {
+  margin-top: 0;
+}
+
+/* Adjust margin for the grid when it's the last child in the new card */
+.indicator-section-card .analysis-metric-grid:last-child {
+  margin-bottom: 0;
+}
+
+.technical-signal-section .contributing-factors-list {
+  list-style-type: none;
+  padding-left: 0; /* Align with heading */
+  padding-right: var(--space-s); /* Added for spacing from scrollbar */
+  margin-top: var(--space-s);
+  margin-bottom: var(--space-lg);
+  max-height: 150px;
+  overflow-y: auto;
+  border-top: 1px solid var(--color-border-subtle);
+  padding-top: var(--space-s);
+  /* Add transition for potential hover effects */
+  transition: box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.technical-signal-section .contributing-factors-list:hover {
+  /* Subtle inner shadow to indicate interactivity on hover */
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+}
+
+.technical-signal-section .factor-item {
+  display: flex; /* Use flex for alignment */
+  align-items: center; /* Vertically align items */
+  padding: var(--space-xs) 0;
+  font-size: var(--font-size-s);
+  border-bottom: 1px solid var(--color-border-subtle); /* Corrected variable */
+  gap: var(--space-s); /* Space between dot, condition, and implication */
+}
+
+.technical-signal-section .factor-item:last-child {
+  border-bottom: none;
+}
+
+.technical-signal-section .factor-condition {
+  flex-grow: 1; /* Allow condition to take available space */
+  color: var(--color-text-secondary);
+}
+
+.technical-signal-section .factor-implication {
+  font-size: var(--font-size-xs);
+  padding: 2px var(--space-xs);
+  border-radius: var(--radius-md); 
+  font-weight: var(--font-weight-semibold);
+  /* margin-left: auto; */ /* Ensure this is commented out or removed */
+  white-space: nowrap; /* Prevent wrapping */
+}
+
+/* Specific styling for implication based on sentiment */
+.technical-signal-section .factor-implication.sentiment-positive-light {
+  background-color: var(--color-success-background-subtle);
+  color: var(--color-success-text-strong);
+  border: 1px solid var(--color-success-border-subtle);
+}
+
+.technical-signal-section .factor-implication.sentiment-negative-light {
+  background-color: var(--color-negative-bg-alpha-10);
+  color: var(--color-danger-text-strong);
+  border: 1px solid var(--color-danger-border-subtle);
+}
+
+.technical-signal-section .factor-implication.sentiment-neutral-light {
+  background-color: var(--color-warning-bg-alpha-10);
+  color: var(--color-warning-text-strong);
+  border: 1px solid var(--color-warning-border-subtle);
+}
+
+/* Custom Scrollbar for Contributing Factors List */
+.technical-signal-section .contributing-factors-list::-webkit-scrollbar {
+  width: var(--scrollbar-size, 8px);
+}
+
+.technical-signal-section .contributing-factors-list::-webkit-scrollbar-track {
+  background: transparent; /* Make track transparent to blend with card background */
+  border-radius: var(--radius-sm, 6px);
+  margin-block: var(--space-xs); /* Add a little space from top/bottom edges of the list */
+}
+
+.technical-signal-section .contributing-factors-list::-webkit-scrollbar-thumb {
+  background-color: var(--color-text-muted, rgba(235, 235, 245, 0.45)); 
+  border-radius: var(--radius-sm, 6px);
+  /* Create a minimal border that matches the track's intended transparency, or remove if background is transparent */
+  border: 2px solid var(--color-bg-card, #1D1D1F); /* Use card background for border to create padding effect */
+}
+
+.technical-signal-section .contributing-factors-list::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-text-secondary, rgba(235, 235, 245, 0.65)); 
+}
+
+/* Firefox Custom Scrollbar */
+.technical-signal-section .contributing-factors-list {
+  scrollbar-width: thin; /* "auto" or "thin" */
+  scrollbar-color: var(--color-text-muted, rgba(235, 235, 245, 0.45)) transparent; /* thumb and transparent track */
+}
+
+/* Ensure the list itself has a compatible background if scrollbar track is transparent */
+.technical-signal-section .contributing-factors-list {
+    /* This rule block for .contributing-factors-list is already defined above, these are just notes for compatibility */
+    /* background-color: var(--color-bg-card); /* or a slightly different shade if needed */
+}
+
+/* Styles for multi-timeframe display */
+.timeframe-subheader {
+  font-size: var(--font-size-s); /* Slightly smaller than section h4 */
+  color: var(--color-text-secondary);
+  margin-top: var(--space-md);
+  margin-bottom: var(--space-xs);
+  padding-bottom: var(--space-xxs);
+  border-bottom: 1px dashed var(--color-border-very-subtle);
+  font-weight: var(--font-weight-medium);
+}
+
+.analysis-metric-grid.sub-grid {
+  padding-left: var(--space-md); /* Indent sub-grid items */
+  background-color: var(--color-bg-offset); /* Slightly different background for visual grouping */
+  border-radius: var(--radius-sm);
+  padding-top: var(--space-xs);
+  padding-bottom: var(--space-xs);
+  margin-bottom: var(--space-sm);
+}
+
+.timeframe-error-text {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-error);
+  padding: var(--space-xs) var(--space-md);
+  background-color: var(--color-error-background-subtle);
+  border-left: 3px solid var(--color-error);
+  margin: var(--space-sm) 0;
+  border-radius: var(--radius-sm);
+} 

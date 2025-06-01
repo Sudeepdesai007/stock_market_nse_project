@@ -1,0 +1,245 @@
+/* ==========================================================================
+   Metric Item & List Styles (within Metric Category Cards)
+   ========================================================================== */
+/* Styles for the new metric categories and tooltips */
+.metric-category-card .metrics-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-bottom: auto; 
+}
+
+.metric-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: var(--space-md, 12px) 0;
+  border-bottom: 1px solid var(--color-border-subtle, #2c2f3b);
+  gap: var(--space-md, 12px);
+}
+
+.metric-item:last-child {
+  border-bottom: none;
+}
+
+.metric-label {
+  flex-basis: 50%;
+  font-weight: var(--font-weight-medium, 500);
+  color: var(--color-text-secondary, #c5c8d3);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs, 6px);
+  line-height: 1.4;
+}
+
+.metric-label strong {
+  color: var(--color-text-primary, #e0e0e0);
+}
+
+.info-icon-container {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: help;
+}
+
+.info-icon {
+  width: var(--font-size-icon-sm, 16px);
+  height: var(--font-size-icon-sm, 16px);
+  background-color: var(--color-text-muted, #888da8);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-bg-primary, #1e1f26);
+  font-style: normal;
+  font-weight: bold;
+  font-size: var(--font-size-xs, 0.75rem);
+  line-height: 1;
+}
+
+.info-icon::before {
+  content: 'i';
+  color: var(--color-bg-primary, #1e1f26);
+}
+
+.tooltip-text {
+  visibility: hidden;
+  width: 220px;
+  background-color: var(--color-bg-tooltip, #111318);
+  color: var(--color-text-tooltip, #e0e0e0);
+  text-align: left;
+  border-radius: var(--radius-sm, 4px);
+  padding: var(--space-sm, 8px) var(--space-md, 12px);
+  position: absolute;
+  z-index: var(--z-index-tooltip, 10);
+  bottom: 125%;
+  left: 50%;
+  margin-left: -110px;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+  font-size: var(--font-size-body-small, 0.875rem);
+  font-weight: var(--font-weight-regular, 400);
+  line-height: 1.5;
+  box-shadow: var(--shadow-tooltip, 0 2px 8px rgba(0,0,0,0.3));
+}
+
+.info-icon-container:hover .tooltip-text,
+.info-icon-container:focus .tooltip-text,
+.info-icon-container:focus-within .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+.metric-value-container {
+  flex-basis: 50%;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-xs, 6px);
+  line-height: 1.4;
+}
+
+.primary-metric-display {
+  /* Styles for the main value if needed, mostly handled by .value-main */
+}
+
+.value-main {
+  font-size: var(--font-size-h5, 1.1rem);
+  font-weight: var(--font-weight-semibold, 600);
+  color: var(--color-text-primary, #e0e0e0);
+}
+
+.value-main .unit {
+  font-size: var(--font-size-body-small, 0.875rem);
+  color: var(--color-text-muted, #888da8);
+  margin-left: var(--space-xxs, 4px);
+}
+
+.metric-value-na {
+  color: var(--color-text-disabled, #6a738b) !important;
+  font-style: italic;
+}
+
+.peer-comparison-details {
+  font-size: var(--font-size-body-small, 0.875rem);
+  color: var(--color-text-secondary, #c5c8d3);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--space-xs, 6px);
+}
+
+.peer-average-label {
+  font-weight: var(--font-weight-medium, 500);
+}
+
+.peer-average-value {
+  /* Specific styling if needed */
+}
+
+.peer-average-value .unit {
+  color: var(--color-text-muted, #888da8);
+}
+
+.peer-comparison-text {
+  font-style: italic;
+  font-weight: var(--font-weight-medium, 500);
+  margin-left: var(--space-xs, 6px);
+}
+
+.status-better {
+  color: var(--color-positive-text, #28a745);
+}
+
+.status-worse {
+  color: var(--color-negative-text, #dc3545);
+}
+
+.metric-yoy-growth {
+  font-size: var(--font-size-body-small, 0.875rem);
+  color: var(--color-text-muted, #888da8);
+  font-style: italic;
+}
+
+.metric-yoy-growth.text-positive {
+  color: var(--color-positive-text, #28a745);
+}
+
+.metric-yoy-growth.text-negative {
+  color: var(--color-negative-text, #dc3545);
+}
+
+.metric-value-container.text-positive .value-main {
+  color: var(--color-positive-text, #28a745);
+}
+
+.metric-value-container.text-negative .value-main {
+  color: var(--color-negative-text, #dc3545);
+}
+
+/* Sentiment-specific styling */
+.value-main.sentiment-bullish {
+  color: var(--color-positive-text, #28a745); /* Green for Bullish */
+  font-weight: var(--font-weight-bold, 700);
+}
+
+.value-main.sentiment-bearish {
+  color: var(--color-negative-text, #dc3545); /* Red for Bearish */
+  font-weight: var(--font-weight-bold, 700);
+}
+
+.value-main.sentiment-neutral {
+  color: var(--color-neutral-text, #ffc107); /* Orange/Yellow for Neutral - ensure this var exists or use a hex */
+  font-weight: var(--font-weight-bold, 700);
+}
+
+/* Peer Comparison Styles */
+.metric-value.peer-better {
+  color: var(--color-positive);
+}
+
+.metric-value.peer-worse {
+  color: var(--color-negative);
+}
+
+.peer-comparison-text.status-better {
+  color: var(--color-positive);
+}
+
+.peer-comparison-text.status-worse {
+  color: var(--color-negative);
+}
+
+.peer-comparison-text.status-higher,
+.peer-comparison-text.status-lower {
+  color: var(--color-text-secondary);
+}
+
+/* Styles for YoY growth in metric item */
+.metric-yoy-growth {
+  margin-top: var(--space-xs);
+}
+
+.metric-yoy-growth.change-positive-text {
+  color: var(--color-positive);
+}
+
+.metric-yoy-growth.change-negative-text {
+  color: var(--color-negative);
+}
+
+/* Keep specific styling for neutral peer comparison text if it's still needed */
+.peer-comparison-text.status-higher,
+.peer-comparison-text.status-lower {
+  color: var(--color-text-secondary);
+}
+
+/* Ensure the margin-top for .metric-yoy-growth is applied if it's a separate block. 
+   The color is handled by .text-positive / .text-negative applied to it. */
+.metric-yoy-growth {
+  /* font-size, color, font-style are defined above */
+  margin-top: var(--space-xs); /* This was in the old block, can be kept if desired for spacing */
+} 

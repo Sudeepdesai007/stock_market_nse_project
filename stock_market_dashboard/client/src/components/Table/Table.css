@@ -1,0 +1,148 @@
+/* ==========================================================================
+   Table Styles
+   ========================================================================== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: var(--space-lg);
+  font-size: var(--font-size-body-small);
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+table td {
+  padding: var(--space-md, 12px) var(--space-lg, 16px);
+  text-align: left;
+  border-bottom: 1px solid var(--color-border-subtle, #2c2f3b);
+  border-top: 1px solid var(--color-border-subtle, #2c2f3b);
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+/* Specifically for the first column (company name) in peer table to allow wrapping if needed */
+.peer-companies-section table td:first-child,
+.peer-companies-section table th:first-child {
+  white-space: normal;
+  min-width: 150px;
+}
+
+table th {
+  background-color: var(--color-bg-table-header, var(--color-bg-header, #1f232a));
+  color: var(--color-text-primary, #e0e0e0);
+  font-weight: var(--font-weight-bold, 700);
+  font-size: var(--font-size-body-small, 0.875rem);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide, 0.05em);
+  padding: var(--space-md, 12px) var(--space-lg, 16px);
+  text-align: left;
+  white-space: nowrap;
+  border-bottom: 2px solid var(--color-accent-primary, #6b7eff);
+}
+
+table tr:nth-child(even) {
+  background-color: var(--color-bg-table-stripe);
+}
+
+table tr:hover {
+  background-color: var(--color-bg-table-row-hover, #2a2e37);
+}
+
+table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Table Scroll Wrapper & Fade Effect */
+.table-scroll-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.table-scroll-wrapper > table {
+  display: block;
+  overflow-x: auto;
+  width: 100%;
+}
+
+/* Right fade shadow */
+.table-scroll-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: var(--space-2xl);
+  pointer-events: none;
+  background: linear-gradient(to left, var(--color-bg-card), transparent);
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.table-scroll-wrapper:hover::after,
+.table-scroll-wrapper:focus-within::after {
+  opacity: 1;
+}
+
+/* Peer Companies Section Table Specifics */
+.peer-companies-section .table-scroll-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  max-height: 400px;
+  overflow-y: auto;
+  border: var(--border-width-xs) solid var(--color-border-subtle);
+  border-radius: var(--radius-sm);
+  margin-top: var(--space-sm);
+}
+
+.peer-companies-section .table-scroll-wrapper > table {
+  display: block;
+  overflow-x: auto;
+  width: 100%;
+}
+
+/* Sticky Table Headers for Peer Companies Table */
+.peer-companies-section .table-scroll-wrapper th {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: var(--color-bg-table-header, var(--color-bg-header, #1f232a));
+}
+
+/* The specific ::after for .peer-companies-section is now removed as it's handled by the general .table-scroll-wrapper::after */
+
+/* Right fade shadow for horizontal scroll - existing logic IS NOW HANDLED BY THE GENERAL .table-scroll-wrapper::after */
+
+/* Peer Companies Section Table Specifics */
+.peer-companies-section .table-scroll-wrapper::after { /* Horizontal fade */
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 30px;
+  pointer-events: none;
+  background: linear-gradient(to left, var(--color-bg-tooltip), transparent);
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.peer-companies-section .table-scroll-wrapper:hover::after,
+.peer-companies-section .table-scroll-wrapper:focus-within::after {
+  opacity: 0.7;
+}
+
+/* Text alignment utility classes */
+.text-left { text-align: left !important; }
+.text-center { text-align: center !important; }
+.text-right { text-align: right !important; }
+
+/* Apply positive/negative colors from variables, assuming these exist in base.css or utilities.css */
+.text-positive {
+  color: var(--color-positive-text, #28a745);
+}
+.text-negative {
+  color: var(--color-negative-text, #dc3545);
+} 

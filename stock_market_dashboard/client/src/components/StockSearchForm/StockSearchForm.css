@@ -1,0 +1,315 @@
+/* ==========================================================================
+   Stock Search Form (.stock-form, .stock-input, .fetch-button)
+   ========================================================================== */
+/* Custom styles for the stock dashboard */
+.stock-form {
+  margin-bottom: var(--space-2xl);
+  display: flex;
+  gap: var(--space-sm);
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: sticky;
+  top: var(--space-lg);
+  background-color: var(--color-bg-sticky-form-alpha-90);
+  backdrop-filter: blur(var(--blur-sm));
+  padding: var(--space-lg) var(--space-xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sticky-form-softer);
+  z-index: 1000;
+  width: clamp(320px, 60%, 650px);
+  margin-left: auto;
+  margin-right: auto;
+  transition: box-shadow 0.2s ease-in-out, border-radius 0.2s ease-in-out;
+  animation: fadeInUp 0.5s 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+/* When suggestions are active, the .suggestions-are-active class on .stock-form
+   might still be useful for other subtle cues, but not for border-radius clipping fix.
+   So, removing the border-radius flattening for now. */
+/* .stock-form.suggestions-are-active {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+} */
+
+.stock-form:focus-within {
+  box-shadow: var(--shadow-form-focus-within);
+}
+
+.stock-input-wrapper {
+  position: relative;
+  display: flex;
+  flex-grow: 1;
+}
+
+.stock-input {
+  padding: var(--space-md) var(--space-lg);
+  font-size: var(--font-size-md);
+  border-radius: var(--radius-md);
+  border: var(--border-width-md) solid var(--color-border-input);
+  min-width: 0;
+  flex-grow: 1;
+  background-color: var(--color-bg-input);
+  color: var(--color-text-primary);
+  transition: border-color 0.2s ease-in-out,
+              box-shadow 0.2s ease-in-out;
+  padding-right: var(--space-2xl);
+}
+
+.stock-input:focus {
+  border-color: var(--color-accent-primary);
+  box-shadow: var(--shadow-input-focus);
+  outline: none;
+}
+
+.stock-input::placeholder {
+  color: var(--color-text-muted);
+}
+
+/* Animated Placeholder Caret & Input States */
+.stock-input.animated-placeholder::placeholder {
+  color: var(--color-text-primary);
+}
+
+.stock-input.animated-placeholder {
+  position: relative;
+}
+
+/* Commenting out the blinkCaret animation and its application */
+/*
+@keyframes blinkCaret {
+  from, to { border-right-color: transparent; }
+  50% { border-right-color: var(--color-accent-primary); }
+}
+
+.stock-input.animated-placeholder:not(:focus):placeholder-shown {
+  border-right: var(--border-width-md) solid var(--color-accent-primary);
+  animation: blinkCaret 1s step-end infinite;
+  padding-right: calc(var(--space-2xl) + var(--space-xs)); 
+}
+
+.stock-input.animated-placeholder:focus {
+  border-right-color: transparent; 
+  animation: none;
+  padding-right: var(--space-2xl); 
+}
+*/
+
+/* Ensure the input always has its standard right border defined by .stock-input */
+.stock-input.animated-placeholder:not(:focus):placeholder-shown {
+  /* No special border right styling needed here anymore */
+  /* padding-right will be based on .stock-input or .clear-input-button presence */
+}
+
+.stock-input.animated-placeholder:focus {
+    /* padding-right will be based on .stock-input or .clear-input-button presence */
+    /* Focus border is handled by .stock-input:focus */
+}
+
+/* Style for input when it has a value */
+.stock-input.has-value {
+}
+
+/* Ensure focused .has-value also keeps the accent left border */
+.stock-input.has-value:focus {
+}
+
+/* Ensure the clear button is not overlapped by the animated border */
+.clear-input-button {
+  position: absolute;
+  top: 50%;
+  right: var(--space-sm);
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  padding: 0 var(--space-xs);
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s ease-in-out;
+  z-index: 2;
+}
+
+.fetch-button {
+  padding: var(--space-md) var(--space-xl);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--radius-md);
+  border: none;
+  background-color: var(--color-accent-primary);
+  color: var(--color-text-white);
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, transform 0.1s ease-in-out;
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+}
+
+.fetch-button::before {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23FFFFFF' width='18px' height='18px'%3E%3Cpath d='M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5A6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+/* Comment about button height calculation can be removed or updated if explicit height is re-added */
+
+.fetch-button:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-button-focus), var(--shadow-card-hover);
+}
+
+.fetch-button:disabled {
+  background-color: var(--color-bg-grid-item);
+  color: var(--color-text-muted);
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* "Enter to search" Hint */
+.enter-hint {
+  flex-basis: 100%;
+  text-align: center;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin-top: var(--space-sm);
+  font-style: italic;
+  opacity: 0.9;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.stock-form:not(:focus-within) .enter-hint {
+    /* Consider hiding or reducing opacity if form is not focused and empty */
+    /* For now, let's keep it visible as per JS logic */
+}
+
+/* Suggestions List Styling - Now for Portal */
+.suggestions-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  /* position: absolute; */ /* Will be set to fixed or absolute by inline style */
+  /* top: 100%; */ /* Removed, controlled by inline style */
+  /* left: 0; */ /* Removed, controlled by inline style */
+  /* right: 0; */ /* Removed, controlled by inline style */
+  background-color: var(--color-bg-card);
+  border: var(--border-width-sm) solid var(--color-accent-primary);
+  border-top: none; /* Ensure input's bottom border acts as the top line */
+  border-radius: 0 0 var(--radius-md) var(--radius-md); /* Keep overall shape */
+  max-height: 200px; 
+  overflow-y: auto;
+  z-index: 10000; /* Ensure it's above almost everything, including the sticky form */
+  box-shadow: var(--shadow-dropdown);
+  /* width will be set by inline style */
+  animation: fadeInSlideDown 0.2s ease-out;
+}
+
+.suggestion-item {
+  padding: var(--space-sm) var(--space-lg);
+  cursor: pointer;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+  /* Ensure right padding is enough for scrollbar + more space */
+  padding-right: calc(var(--space-lg) + 12px); /* var(--space-lg) for text, 12px for scrollbar + buffer */
+}
+
+.suggestion-item:hover,
+.suggestion-item:focus {
+  background-color: var(--color-bg-hover-subtle);
+  color: var(--color-accent-primary);
+  outline: none;
+}
+
+.suggestion-item:last-child {
+  border-bottom-left-radius: var(--radius-md);
+  border-bottom-right-radius: var(--radius-md);
+}
+
+.suggestion-item.active {
+  background-color: var(--color-accent-primary-subtle);
+  color: var(--color-accent-primary-strong);
+  font-weight: var(--font-weight-semibold);
+  /* border: var(--border-width-sm) solid var(--color-accent-primary); */ /* Remove or soften border */
+  outline: none; /* Ensure no default browser outline interferes */
+}
+
+.suggestion-highlight {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-accent-primary-strong); /* Or a different color if preferred */
+}
+
+.suggestion-item.no-results {
+  padding: var(--space-md) var(--space-lg);
+  color: var(--color-text-muted);
+  cursor: default;
+  font-style: italic;
+}
+
+.suggestion-item.no-results:hover,
+.suggestion-item.no-results:focus {
+  background-color: transparent; /* No hover effect for no-results message */
+  color: var(--color-text-muted);
+}
+
+/* Style for input when suggestions are open */
+.stock-input[aria-expanded="true"] {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-color: var(--color-accent-primary); /* Keep accent color when list is open */
+}
+
+/* Custom Scrollbar for Suggestions List (WebKit browsers) */
+.suggestions-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Keyframes for suggestions list animation */
+@keyframes fadeInSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.suggestions-list::-webkit-scrollbar-track {
+  background: var(--color-bg-card); /* Or a slightly darker shade of the list bg */
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  /* Add a little padding to the track on the right */
+  margin-right: 2px;
+}
+
+.suggestions-list::-webkit-scrollbar-thumb {
+  background: var(--color-border-input); /* Or a muted accent color */
+  border-radius: 4px;
+}
+
+.suggestions-list::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted); /* Darker on hover */
+}
+
+.suggestion-symbol {
+  color: var(--color-text-muted); /* Lighter color for the symbol */
+  font-size: 0.9em; /* Slightly smaller font size */
+  margin-left: var(--space-xs);
+}
+
+/* Ensure highlights within symbols are prominent */
+.suggestion-symbol .suggestion-highlight {
+  color: var(--color-accent-primary-strong); /* Use main highlight color */
+  font-weight: var(--font-weight-bold);      /* Ensure bold font weight */
+  background-color: transparent;           /* Prevent unexpected backgrounds */
+} 

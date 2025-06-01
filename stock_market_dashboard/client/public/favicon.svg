@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <style>
+    .bg { fill: #2C2F33; } /* Dark background, similar to app header */
+    .line {
+      fill: none;
+      stroke: #5865F2; /* Accent blue for the line */
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .dot {
+      fill: #5865F2; /* Accent blue for the dot */
+    }
+    @media (prefers-color-scheme: light) {
+      .bg { fill: #E0E0E0; } /* Lighter background for light mode */
+      .line { stroke: #3498DB; } /* A different blue for light mode if desired */
+      .dot { fill: #3498DB; }
+    }
+  </style>
+  <rect class="bg" width="32" height="32" rx="6"/>
+  <polyline class="line" points="6,24 12,16 18,20 26,10"/>
+  <circle class="dot" cx="26" cy="10" r="2.5"/>
+</svg> 

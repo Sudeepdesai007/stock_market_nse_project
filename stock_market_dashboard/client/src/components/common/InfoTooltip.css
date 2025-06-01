@@ -1,0 +1,199 @@
+/* ==========================================================================
+   Tooltip & Info Icon Styles
+   ========================================================================== */
+/* Info Icon and Tooltip Styling */
+.info-icon-container {
+  position: relative; 
+  display: inline-flex; 
+  align-items: center;
+  margin-left: var(--space-xs);
+  padding: var(--space-xs); /* Increased padding for larger touch target & focus outline spacing */
+  border-radius: var(--radius-full); /* Make it fully round for a softer look */
+  transition: background-color 0.2s ease-in-out; 
+  z-index: auto; /* Keep this auto unless proven necessary to increase */
+}
+
+.info-icon-container:hover,
+.info-icon-container:focus-within {
+  background-color: var(--color-bg-metric-item-hover);
+  z-index: 1010; /* Ensure container is above siblings on hover/focus for tooltip visibility */
+}
+
+.info-icon {
+  cursor: help;
+  font-style: normal; 
+  width: var(--size-icon-md); /* Was var(--size-icon-md, 18px) */
+  height: var(--size-icon-md); /* Was var(--size-icon-md, 18px) */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  color: var(--color-accent-primary); 
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor' width='20px' height='20px'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z'/%3E%3C/svg%3E"); /* SVG width/height updated to 20px */
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: none; 
+  text-indent: -9999px; 
+  transition: transform 0.2s ease-in-out; 
+}
+
+.info-icon-container:hover .info-icon {
+  transform: scale(1.15); 
+}
+
+.info-icon i { 
+  display: none;
+}
+
+/* Default Tooltip (Above) */
+.tooltip-text {
+  visibility: hidden !important;
+  width: auto !important; /* Override fixed width from conflicting rule */
+  min-width: 180px !important;
+  max-width: 280px !important; 
+  background-color: var(--color-bg-tooltip) !important;
+  color: var(--color-text-tooltip) !important;
+  text-align: left !important;
+  border-radius: var(--radius-md) !important;
+  padding: var(--space-md) !important;
+  position: absolute !important; 
+  z-index: 10001 !important; 
+  bottom: calc(100% + var(--space-xs) + var(--border-width-arrow));
+  left: 50% !important; 
+  top: auto !important; 
+  right: auto !important; 
+  margin-left: 0 !important; /* Override margin-left from conflicting rule */
+  opacity: 0 !important;
+  transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease !important;
+  box-shadow: var(--shadow-tooltip-stronger) !important;
+  font-size: var(--font-size-sm) !important;
+  line-height: var(--line-height-comfortable) !important;
+  transform: translateX(-50%) translateY(var(--space-xxs)) !important;
+  font-weight: var(--font-weight-normal) !important;
+  white-space: normal !important; 
+}
+
+.tooltip-text strong {
+  font-weight: var(--font-weight-semibold) !important;
+  color: var(--color-text-tooltip-strong) !important;
+}
+
+.info-icon-container:hover .tooltip-text,
+.info-icon-container:focus-within .tooltip-text {
+  visibility: visible !important; 
+  opacity: 1 !important; 
+  transform: translateX(-50%) translateY(0) !important; 
+}
+
+/* Default Arrow (for tooltip above icon, arrow at bottom of tooltip pointing down) */
+.tooltip-text::after {
+  content: "" !important;
+  position: absolute !important;
+  display: block !important;
+  width: 0 !important;
+  height: 0 !important;
+  top: 100% !important; 
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  border-style: solid !important;
+  border-width: var(--border-width-arrow) !important; /* Reverted to CSS variable */
+  border-top-color: var(--color-bg-tooltip) !important; 
+  border-right-color: transparent !important;
+  border-bottom-color: transparent !important;
+  border-left-color: transparent !important;
+}
+
+/* --- Left Aligned Tooltip --- */
+.info-icon-container.tooltip-left .tooltip-text {
+  bottom: auto !important; 
+  top: 50% !important;
+  left: auto !important; 
+  right: calc(100% + var(--space-xs) + var(--border-width-arrow)) !important; 
+  transform: translateY(-50%) translateX(var(--space-xxs)) !important; 
+}
+
+.info-icon-container.tooltip-left:hover .tooltip-text,
+.info-icon-container.tooltip-left:focus-within .tooltip-text {
+  transform: translateY(-50%) translateX(0) !important;
+}
+
+.info-icon-container.tooltip-left .tooltip-text::after {
+  content: "" !important;
+  position: absolute !important;
+  display: block !important;
+  width: 0 !important;
+  height: 0 !important;
+  top: 50% !important;
+  left: 100% !important; 
+  bottom: auto !important; 
+  right: auto !important; 
+  transform: translateY(-50%) !important;
+  border-style: solid !important;
+  border-width: var(--border-width-arrow) !important;
+  border-top-color: transparent !important; 
+  border-right-color: transparent !important;
+  border-bottom-color: transparent !important;
+  border-left-color: var(--color-bg-tooltip) !important; 
+}
+
+/* --- Right Aligned Tooltip --- */
+.info-icon-container.tooltip-right .tooltip-text {
+  bottom: auto !important; 
+  top: 50% !important;
+  left: calc(100% + var(--space-xs) + var(--border-width-arrow)) !important; 
+  right: auto !important; 
+  transform: translateY(-50%) translateX(calc(-1 * var(--space-xxs))) !important; 
+}
+
+.info-icon-container.tooltip-right:hover .tooltip-text,
+.info-icon-container.tooltip-right:focus-within .tooltip-text {
+  transform: translateY(-50%) translateX(0) !important;
+}
+
+.info-icon-container.tooltip-right .tooltip-text::after {
+  content: "" !important;
+  position: absolute !important;
+  display: block !important;
+  width: 0 !important;
+  height: 0 !important;
+  top: 50% !important;
+  right: 100% !important; 
+  bottom: auto !important; 
+  left: auto !important; 
+  transform: translateY(-50%) !important;
+  border-style: solid !important;
+  border-width: var(--border-width-arrow) !important;
+  border-top-color: transparent !important; 
+  border-right-color: var(--color-bg-tooltip) !important;
+  border-bottom-color: transparent !important;
+  border-left-color: transparent !important;
+}
+
+/* Adjust positioning for tooltips that might appear on the left/right 
+   if there's not enough space above/below. 
+   This often requires JS, but we can provide some basic alternatives. 
+   For now, the primary position is above. */
+
+/* Example: if a parent container forces a tooltip to the left:
+.info-icon-container.tooltip-left .tooltip-text {
+  bottom: auto;
+  top: 50%;
+  left: auto;
+  right: calc(100% + var(--space-sm));
+  transform: translateY(-50%);
+}
+.info-icon-container.tooltip-left .tooltip-text::after {
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+  border-top: var(--border-width-arrow) solid transparent;
+  border-bottom: var(--border-width-arrow) solid transparent;
+  border-left: var(--border-width-arrow) solid var(--color-bg-tooltip);
+  border-right: none;
+}
+*/
+
+.info-icon-container:focus-visible {
+  outline: var(--border-width-md) solid var(--color-accent-primary);
+  outline-offset: var(--space-xxs); 
+} 
