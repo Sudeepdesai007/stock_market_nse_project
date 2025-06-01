@@ -3,7 +3,7 @@
 // and not hardcoded in the source. Refer to the README for initial setup.
 export const EXTERNAL_API_BASE_URL = 'https://stock.indianapi.in/stock';
 export const HISTORICAL_API_BASE_URL = 'https://stock.indianapi.in/historical_data';
-export const PRIMARY_API_KEY = 'sk-live-15i6VWdMESf2YLQU1dGSV6PxuLdRPWzNycs2stx9';
+export const PRIMARY_API_KEY = 'sk-live-J5qjZSiFJQ2sq09sPQfr6JRUufO8t3k7yPIqUVJa';
 export const BACKUP_API_KEY = 'sk-live-a5Dc4nJRfs2CYF2WQiaIjLVl0szju43jFkfXCzVr';
 
 // UI Display Limits: Constants controlling the number of items or length of text displayed in various UI sections.
