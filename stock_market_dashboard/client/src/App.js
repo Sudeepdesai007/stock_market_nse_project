@@ -25,19 +25,7 @@ import './components/common/InfoTooltip.css'; // Styles for InfoTooltip
 import './components/Tabs/Tabs.css'; // Styles for Tabs
 // import './components/ErrorBoundary/ErrorBoundary.css'; // CSS for ErrorBoundary (component imports its own CSS)
 import { Line } from 'react-chartjs-2';
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-  TimeScale,
-  BarElement,
-  BarController,
-} from 'chart.js';
+import { Chart as ChartJS, registerables } from 'chart.js';
 import 'chartjs-adapter-date-fns';
 import {
   DEFAULT_NA_STRING,
@@ -96,19 +84,7 @@ const AnalysisTab = lazy(() => import('./components/AnalysisTab'));
 const KeyMetricsTab = lazy(() => import('./components/KeyMetricsTab'));
 const StockSearchForm = lazy(() => import('./components/StockSearchForm/StockSearchForm'));
 
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-  TimeScale,
-  BarElement,
-  BarController
-);
+ChartJS.register(...registerables);
 
 function App() {
   // Use the custom hook for stock data API logic
